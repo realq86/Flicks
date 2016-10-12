@@ -36,11 +36,11 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell")
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
-        cell?.textLabel?.text = "Text"
+        cell.textLabel?.text = "Text"
         
-        return cell!
+        return cell
         
     }
     /*
