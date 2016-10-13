@@ -37,7 +37,10 @@ class MovieDBServer: NSObject {
             },
                     success: { (task:URLSessionDataTask, response:Any?) in
                         
+                        let value = response as! AnyObject
+                        
                         if let response = response as? Dictionary<String, AnyObject> {
+                            
                             self.nowPlayingResponse = response
                             self.nowPlayingArray = self.nowPlayingResponse["results"] as! [AnyObject]
                             print("Array     \(self.nowPlayingArray)")

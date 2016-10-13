@@ -14,6 +14,8 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet weak var tableView: UITableView!
     
     
+    var movieListArray = [AnyObject]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -31,13 +33,15 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let moveDB = MovieDBServer.sharedInstance
         
         moveDB.getPlayingNow { (jsonResponse:Array<AnyObject>, error:Error?) in
-//            print(jsonResponse.debugDescription)
+            
+            self.movieListArray = jsonResponse
+            self.tableView.reloadData()
         }
     }
 
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return self.movieListArray.count
     }
     
     
@@ -48,7 +52,9 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
-        cell.textLabel?.text = "Text"
+        let movie = self.movieListArray[indexPath.row] .value(forKeyPath: "original_title") as! String
+        
+        cell.textLabel?.text = movie
         
         return cell
         
