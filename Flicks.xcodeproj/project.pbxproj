@@ -16,6 +16,7 @@
 		8B88C8D01DAEF1C8000FAB65 /* FlicksTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B88C8CF1DAEF1C8000FAB65 /* FlicksTests.swift */; };
 		8B88C8DB1DAEF1C8000FAB65 /* FlicksUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B88C8DA1DAEF1C8000FAB65 /* FlicksUITests.swift */; };
 		8B88C8E91DAEF3DE000FAB65 /* MoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B88C8E81DAEF3DE000FAB65 /* MoviesViewController.swift */; };
+		8B95CD561DB036A000C5E960 /* MovieDBServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B95CD551DB036A000C5E960 /* MovieDBServer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		8B88C8DA1DAEF1C8000FAB65 /* FlicksUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlicksUITests.swift; sourceTree = "<group>"; };
 		8B88C8DC1DAEF1C8000FAB65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8B88C8E81DAEF3DE000FAB65 /* MoviesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoviesViewController.swift; sourceTree = "<group>"; };
+		8B95CD551DB036A000C5E960 /* MovieDBServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDBServer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +123,7 @@
 				8B88C8C31DAEF1C8000FAB65 /* LaunchScreen.storyboard */,
 				8B88C8C61DAEF1C8000FAB65 /* Info.plist */,
 				8B88C8E81DAEF3DE000FAB65 /* MoviesViewController.swift */,
+				8B95CD551DB036A000C5E960 /* MovieDBServer.swift */,
 			);
 			path = Flicks;
 			sourceTree = "<group>";
@@ -343,6 +346,7 @@
 				8B88C8BD1DAEF1C8000FAB65 /* ViewController.swift in Sources */,
 				8B88C8BB1DAEF1C8000FAB65 /* AppDelegate.swift in Sources */,
 				8B88C8E91DAEF3DE000FAB65 /* MoviesViewController.swift in Sources */,
+				8B95CD561DB036A000C5E960 /* MovieDBServer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

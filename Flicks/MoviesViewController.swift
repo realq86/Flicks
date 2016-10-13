@@ -9,10 +9,6 @@
 import UIKit
 import AFNetworking
 
-private let movieDBAPIKey = ["api_key":"a07e22bc18f5cb106bfe4cc1f83ad8ed"]
-private let baseURL = "https://api.themoviedb.org/3/movie"
-private let nowPlayingEndPoint = "/now_playing"
-//https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed
 class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
@@ -32,22 +28,11 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     
     func apiCAll() {
-    
-        let nowPlayingURL = "\(baseURL)\(nowPlayingEndPoint)"
+        let moveDB = MovieDBServer.sharedInstance
         
-        let manager = AFHTTPSessionManager()
-        
-        manager.get(nowPlayingURL,
-                    parameters: movieDBAPIKey,
-                    progress: { (progress:Progress) in
-                        
-                    },
-                    success: { (task:URLSessionDataTask, response:Any?) in
-                        print(response.debugDescription)
-                    },
-                    failure:{ (task:URLSessionDataTask?, error:Error) in
-                        print(error.localizedDescription)
-                    })
+        moveDB.getPlayingNow { (jsonResponse:AnyObject?, error:Error?) in
+            print(jsonResponse.debugDescription)
+        }
     }
 
     
