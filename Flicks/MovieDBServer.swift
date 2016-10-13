@@ -17,12 +17,14 @@ class MovieDBServer: NSObject {
 
     static let sharedInstance = MovieDBServer()
     
+    var nowPlayingResponse = [String:AnyObject]()
+    var nowPlayingArray = [AnyObject]()
     override init() {
         print("Init MovieDBServer Singleton")
     }
     
     
-    func getPlayingNow(responseBlock: @escaping (AnyObject?, Error?)->()) {
+    func getPlayingNow(responseBlock: @escaping (Array<AnyObject>, Error?)->()) {
         
         let nowPlayingURL = "\(baseURL)\(nowPlayingEndPoint)"
         
@@ -34,13 +36,22 @@ class MovieDBServer: NSObject {
                         
             },
                     success: { (task:URLSessionDataTask, response:Any?) in
-//                        print(response.debugDescription)
-                        responseBlock(response as AnyObject!, nil)
+                        
+                        if let response = response as? Dictionary<String, AnyObject> {
+                            self.nowPlayingResponse = response
+                            self.nowPlayingArray = self.nowPlayingResponse["results"] as! [AnyObject]
+                            print("Array     \(self.nowPlayingArray)")
+                        }
+                        
+                        responseBlock(self.nowPlayingArray, nil)
+                        
             },
                     failure:{ (task:URLSessionDataTask?, error:Error) in
                         print(error.localizedDescription)
-                        responseBlock(nil, error)
+                        responseBlock(self.nowPlayingArray, error)
         })
+        
     }
+    
     
 }

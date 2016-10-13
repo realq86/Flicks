@@ -30,8 +30,8 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func apiCAll() {
         let moveDB = MovieDBServer.sharedInstance
         
-        moveDB.getPlayingNow { (jsonResponse:AnyObject?, error:Error?) in
-            print(jsonResponse.debugDescription)
+        moveDB.getPlayingNow { (jsonResponse:Array<AnyObject>, error:Error?) in
+//            print(jsonResponse.debugDescription)
         }
     }
 
