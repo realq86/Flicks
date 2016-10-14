@@ -12,13 +12,17 @@ class DetailsViewController: UIViewController {
 
     
     @IBOutlet weak var backgroundImageView: UIImageView!
+    @IBOutlet weak var overviewLabel: UILabel!
+    
     var backgroundImageURL:String?
+    var overviewString:String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.backgroundImageView.setImageWith(URL(string: self.backgroundImageURL!)!)
 
+        self.overviewLabel.text = overviewString
         // Do any additional setup after loading the view.
     }
 

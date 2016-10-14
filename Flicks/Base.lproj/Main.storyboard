@@ -133,7 +133,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d8T-ax-v5v" userLabel="contentView">
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nme-i7-mjZ">
-                                                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -191,6 +191,7 @@
                     <navigationItem key="navigationItem" id="oDf-wM-kYV"/>
                     <connections>
                         <outlet property="backgroundImageView" destination="9jG-aJ-nPl" id="JJe-TO-0ts"/>
+                        <outlet property="overviewLabel" destination="nme-i7-mjZ" id="tEJ-a1-JoW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="USo-Ix-sGO" userLabel="First Responder" sceneMemberID="firstResponder"/>

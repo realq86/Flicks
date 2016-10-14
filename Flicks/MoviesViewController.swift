@@ -130,6 +130,7 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     
                     if let detailVC = segue.destination as? DetailsViewController {
                         detailVC.backgroundImageURL = imageURLString
+                        detailVC.overviewString = cell.movieOverview.text
                     }
                     
                 }
