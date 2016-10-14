@@ -52,21 +52,28 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? MovieCell
         
-        if let movie = self.movieListArray[indexPath.row].value(forKeyPath: "original_title") as? String {
+        //Set Movie Title
+        if let movieTitleString = self.movieListArray[indexPath.row].value(forKeyPath: "original_title") as? String {
         
-            cell.textLabel?.text = movie
+            cell?.movieTitle.text = movieTitleString
         }
         
+        //Set Movie Image
         if let imagePathString = self.movieListArray[indexPath.row].value(forKeyPath: "poster_path") as? String {
             
             let imageURLString = "\(imageBaseURL500px)" + imagePathString
-            
-            cell.imageView?.setImageWith(URL(string: imageURLString)!)
+            cell?.movieImageView.setImageWith(URL(string: imageURLString)!)
         }
         
-        return cell
+        //Set Movie Overview
+        
+        if let movieOverviewString = self.movieListArray[indexPath.row].value(forKeyPath: "overview") as? String {
+            cell?.movieOverview.text = movieOverviewString
+        }
+        
+        return cell!
         
     }
     /*
