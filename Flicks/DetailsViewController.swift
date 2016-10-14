@@ -11,6 +11,11 @@ import AFNetworking
 
 private let imageBaseURL500px = "https://image.tmdb.org/t/p/w500"
 
+private let original_title_path = "original_title"
+private let poster_URL_path = "poster_path"
+private let overview_path = "overview"
+private let release_date_path = "release_date"
+private let vote_average_path = "vote_average"
 class DetailsViewController: UIViewController {
 
     
@@ -41,22 +46,33 @@ class DetailsViewController: UIViewController {
     func parseJsonDic(_ movieJson:AnyObject) {
         
         //Set Movie Title
-        if let movieTitleString = movieJson.value(forKeyPath: "original_title") as? String {
+        if let movieTitleString = movieJson.value(forKeyPath: original_title_path) as? String {
             
             self.titleLabel.text = movieTitleString
         }
         
         //Set Movie Image
-        if let imagePathString = movieJson.value(forKeyPath: "poster_path") as? String {
+        if let imagePathString = movieJson.value(forKeyPath: poster_URL_path) as? String {
             
             let imageURLString = "\(imageBaseURL500px)" + imagePathString
             self.backgroundImageView.setImageWith(URL(string: imageURLString)!)
         }
         
         //Set Movie Overview
-        if let movieOverviewString = movieJson.value(forKeyPath: "overview") as? String {
+        if let movieOverviewString = movieJson.value(forKeyPath:overview_path) as? String {
             self.overviewLabel.text = movieOverviewString
         }
+        
+        //Set Movie Date
+        if let movieDateString = movieJson.value(forKeyPath: release_date_path) as? String {
+            self.dateLabel.text = "Release: " + movieDateString
+        }
+        
+        //Set Ratings
+        if let movieRating = movieJson.value(forKeyPath: vote_average_path) as? Float {
+            self.ratingLabel.text = "Rating: "+String(movieRating)
+        }
+        
     }
 
     /*
