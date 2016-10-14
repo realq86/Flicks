@@ -9,6 +9,8 @@
 import UIKit
 import AFNetworking
 
+private let imageBaseURL500px = "https://image.tmdb.org/t/p/w500"
+
 class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
@@ -52,9 +54,17 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
-        let movie = self.movieListArray[indexPath.row] .value(forKeyPath: "original_title") as! String
+        if let movie = self.movieListArray[indexPath.row].value(forKeyPath: "original_title") as? String {
         
-        cell.textLabel?.text = movie
+            cell.textLabel?.text = movie
+        }
+        
+        if let imagePathString = self.movieListArray[indexPath.row].value(forKeyPath: "poster_path") as? String {
+            
+            let imageURLString = "\(imageBaseURL500px)" + imagePathString
+            
+            cell.imageView?.setImageWith(URL(string: imageURLString)!)
+        }
         
         return cell
         
