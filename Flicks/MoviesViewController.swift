@@ -26,6 +26,7 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         super.viewDidLoad()
 
         self.setupRefreshControl()
+        self.setupTableView()
         
         self.apiCAll {  }
         
@@ -43,8 +44,6 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.networkErrorView.isHidden = true
     }
     
-    
-
     // MARK: API Call
     func apiCAll(_ completionHandler:@escaping ()->()) {
         let moveDB = MovieDBServer.sharedInstance
@@ -81,6 +80,16 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
 
     // MARK: Table View Code
+    
+    func setupTableView() {
+        self.tableView.estimatedRowHeight = 100
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
+    
     open func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.movieListArray.count
     }
@@ -107,9 +116,11 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
             cell?.movieOverview.text = movieOverviewString
         }
         
+        cell?.sizeToFit()
         return cell!
         
     }
+    
     
     
     // MARK: - Navigation
