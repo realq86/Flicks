@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		8A7B20D8F4B10A67BD30AFD0 /* Pods_Flicks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77FDE792B613E55FF4F74320 /* Pods_Flicks.framework */; };
 		8B88C8BB1DAEF1C8000FAB65 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B88C8BA1DAEF1C8000FAB65 /* AppDelegate.swift */; };
-		8B88C8BD1DAEF1C8000FAB65 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B88C8BC1DAEF1C8000FAB65 /* ViewController.swift */; };
 		8B88C8C01DAEF1C8000FAB65 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B88C8BE1DAEF1C8000FAB65 /* Main.storyboard */; };
 		8B88C8C21DAEF1C8000FAB65 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B88C8C11DAEF1C8000FAB65 /* Assets.xcassets */; };
 		8B88C8C51DAEF1C8000FAB65 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B88C8C31DAEF1C8000FAB65 /* LaunchScreen.storyboard */; };
@@ -17,6 +16,7 @@
 		8B88C8DB1DAEF1C8000FAB65 /* FlicksUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B88C8DA1DAEF1C8000FAB65 /* FlicksUITests.swift */; };
 		8B88C8E91DAEF3DE000FAB65 /* MoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B88C8E81DAEF3DE000FAB65 /* MoviesViewController.swift */; };
 		8B95CD561DB036A000C5E960 /* MovieDBServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B95CD551DB036A000C5E960 /* MovieDBServer.swift */; };
+		8B95CD591DB0625D00C5E960 /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B95CD581DB0625D00C5E960 /* MovieCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,7 +42,6 @@
 		8B6AA98395E1C72058BE53C2 /* Pods-Flicks.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Flicks.release.xcconfig"; path = "Pods/Target Support Files/Pods-Flicks/Pods-Flicks.release.xcconfig"; sourceTree = "<group>"; };
 		8B88C8B71DAEF1C8000FAB65 /* Flicks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flicks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B88C8BA1DAEF1C8000FAB65 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8B88C8BC1DAEF1C8000FAB65 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		8B88C8BF1DAEF1C8000FAB65 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8B88C8C11DAEF1C8000FAB65 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8B88C8C41DAEF1C8000FAB65 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -55,6 +54,7 @@
 		8B88C8DC1DAEF1C8000FAB65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8B88C8E81DAEF3DE000FAB65 /* MoviesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoviesViewController.swift; sourceTree = "<group>"; };
 		8B95CD551DB036A000C5E960 /* MovieDBServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDBServer.swift; sourceTree = "<group>"; };
+		8B95CD581DB0625D00C5E960 /* MovieCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MovieCell.swift; path = MovieCell/MovieCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,14 +116,13 @@
 		8B88C8B91DAEF1C8000FAB65 /* Flicks */ = {
 			isa = PBXGroup;
 			children = (
-				8B88C8BA1DAEF1C8000FAB65 /* AppDelegate.swift */,
-				8B88C8BC1DAEF1C8000FAB65 /* ViewController.swift */,
 				8B88C8BE1DAEF1C8000FAB65 /* Main.storyboard */,
-				8B88C8C11DAEF1C8000FAB65 /* Assets.xcassets */,
+				8B95CD571DB061E400C5E960 /* Movies VC */,
+				8B95CD551DB036A000C5E960 /* MovieDBServer.swift */,
+				8B88C8BA1DAEF1C8000FAB65 /* AppDelegate.swift */,
 				8B88C8C31DAEF1C8000FAB65 /* LaunchScreen.storyboard */,
 				8B88C8C61DAEF1C8000FAB65 /* Info.plist */,
-				8B88C8E81DAEF3DE000FAB65 /* MoviesViewController.swift */,
-				8B95CD551DB036A000C5E960 /* MovieDBServer.swift */,
+				8B88C8C11DAEF1C8000FAB65 /* Assets.xcassets */,
 			);
 			path = Flicks;
 			sourceTree = "<group>";
@@ -144,6 +143,15 @@
 				8B88C8DC1DAEF1C8000FAB65 /* Info.plist */,
 			);
 			path = FlicksUITests;
+			sourceTree = "<group>";
+		};
+		8B95CD571DB061E400C5E960 /* Movies VC */ = {
+			isa = PBXGroup;
+			children = (
+				8B88C8E81DAEF3DE000FAB65 /* MoviesViewController.swift */,
+				8B95CD581DB0625D00C5E960 /* MovieCell.swift */,
+			);
+			name = "Movies VC";
 			sourceTree = "<group>";
 		};
 		A75556EC1A976745C750D1F1 /* Pods */ = {
@@ -343,9 +351,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8B88C8BD1DAEF1C8000FAB65 /* ViewController.swift in Sources */,
 				8B88C8BB1DAEF1C8000FAB65 /* AppDelegate.swift in Sources */,
 				8B88C8E91DAEF3DE000FAB65 /* MoviesViewController.swift in Sources */,
+				8B95CD591DB0625D00C5E960 /* MovieCell.swift in Sources */,
 				8B95CD561DB036A000C5E960 /* MovieDBServer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
