@@ -70,22 +70,78 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="Cej-0I-PtD"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lha-ZU-aLK">
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Network Error" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="44A-0c-5Og">
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="6Em-eo-RFC"/>
+                                    <constraint firstItem="44A-0c-5Og" firstAttribute="top" secondItem="Lha-ZU-aLK" secondAttribute="top" id="K9M-El-Hyw"/>
+                                    <constraint firstItem="44A-0c-5Og" firstAttribute="leading" secondItem="Lha-ZU-aLK" secondAttribute="leading" id="LWK-PM-fHR"/>
+                                    <constraint firstAttribute="bottom" secondItem="44A-0c-5Og" secondAttribute="bottom" id="SzJ-Ky-WuG"/>
+                                    <constraint firstAttribute="trailing" secondItem="44A-0c-5Og" secondAttribute="trailing" id="fVL-8Z-QTU"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="YNz-ge-sJC" firstAttribute="top" secondItem="RrZ-Er-f01" secondAttribute="bottom" id="G0W-G4-jki"/>
                             <constraint firstItem="RrZ-Er-f01" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="J2P-TW-7Ap"/>
+                            <constraint firstItem="Lha-ZU-aLK" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="L3I-km-qGw"/>
                             <constraint firstItem="RrZ-Er-f01" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="PUQ-kw-kVq"/>
+                            <constraint firstAttribute="trailing" secondItem="Lha-ZU-aLK" secondAttribute="trailing" id="bkT-Xo-0QT"/>
+                            <constraint firstItem="Lha-ZU-aLK" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="gDt-FZ-bCc"/>
                             <constraint firstAttribute="trailing" secondItem="RrZ-Er-f01" secondAttribute="trailing" id="rjw-IZ-P4e"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="networkErrorLabel" destination="44A-0c-5Og" id="O5u-gY-UYh"/>
+                        <outlet property="networkErrorView" destination="Lha-ZU-aLK" id="5DL-E3-Aa8"/>
                         <outlet property="tableView" destination="RrZ-Er-f01" id="vqP-Sa-ZSw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="71.5" y="136.5"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="7yu-Gt-YjS">
+            <objects>
+                <viewController id="iWH-8A-5MH" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="E1d-gt-2fC"/>
+                        <viewControllerLayoutGuide type="bottom" id="gzK-zx-kX5"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="19U-yE-gjR">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LVI-6L-qEf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="wQG-aK-eVl">
+            <objects>
+                <viewController id="mF2-xD-YDi" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="OZW-Hb-AXd"/>
+                        <viewControllerLayoutGuide type="bottom" id="mnI-2a-fOH"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gJs-2i-03w">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XOv-SJ-R7R" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

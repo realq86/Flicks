@@ -14,6 +14,11 @@ private let imageBaseURL500px = "https://image.tmdb.org/t/p/w500"
 class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
+    
+    //MARK: NetworkError IBOutlets
+    @IBOutlet weak var networkErrorView: UIView!
+    @IBOutlet weak var networkErrorLabel: UILabel!
+    
     var movieListArray = [AnyObject]()
     
     override func viewDidLoad() {
@@ -31,6 +36,12 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.networkErrorView.isHidden = true
+    }
+    
     
 
     // MARK: API Call
@@ -39,10 +50,15 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         moveDB.getPlayingNow { (jsonResponse:Array<AnyObject>, error:Error?) in
             
-            self.movieListArray = jsonResponse
-            self.tableView.reloadData()
-            
-            completionHandler()
+            if (error == nil) {
+                self.movieListArray = jsonResponse
+                self.tableView.reloadData()
+                completionHandler()
+                self.networkErrorView.isHidden = true
+            }
+            else {
+                self.networkErrorView.isHidden = false
+            }
         }
     }
     
