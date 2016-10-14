@@ -14,14 +14,15 @@ private let imageBaseURL500px = "https://image.tmdb.org/t/p/w500"
 class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
-    
-    
     var movieListArray = [AnyObject]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.apiCAll()
+        self.setupRefreshControl()
+        
+        self.apiCAll {  }
+        
         // Do any additional setup after loading the view.
     }
 
@@ -31,24 +32,38 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     
-    func apiCAll() {
+
+    // MARK: API Call
+    func apiCAll(completionHandler:@escaping ()->()) {
         let moveDB = MovieDBServer.sharedInstance
         
         moveDB.getPlayingNow { (jsonResponse:Array<AnyObject>, error:Error?) in
             
             self.movieListArray = jsonResponse
             self.tableView.reloadData()
+            
+            completionHandler()
         }
     }
-
     
+    // MARK: UIRefreshControl
+    func setupRefreshControl() {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refreshControlPulled(refreshControl:)), for: .valueChanged)
+        self.tableView.insertSubview(refreshControl, at: 0)
+    }
+    func refreshControlPulled(refreshControl:UIRefreshControl) {
+        
+        self.apiCAll {
+            refreshControl.endRefreshing()
+        }
+        
+    }
+
+    // MARK: Table View Code
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.movieListArray.count
     }
-    
-    
-    // Row display. Implementers should *always* try to reuse cells by setting each cell's reuseIdentifier and querying for available reusable cells with dequeueReusableCellWithIdentifier:
-    // Cell gets various attributes set automatically based on table (separators) and data source (accessory views, editing controls)
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
