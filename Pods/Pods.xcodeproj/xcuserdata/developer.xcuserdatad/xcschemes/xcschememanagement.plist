@@ -9,6 +9,16 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>CircularSpinner-CircularSpinner.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>CircularSpinner.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-Flicks.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -22,7 +32,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F3AB0706315E489BA0A8676D43FA0573</key>
+		<key>AD15DCAEAFFC6B5680C8BB9A771FC75B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E659FC1F358B805598129E8F4DDDBCC5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FDB564CB9B329445282310F835D1950B</key>
 		<dict>
 			<key>primary</key>
 			<true/>

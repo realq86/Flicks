@@ -24,11 +24,12 @@ class MovieDBServer: NSObject {
     }
     
     
-    func getPlayingNow(responseBlock: @escaping (Array<AnyObject>, Error?)->()) {
+    func getPlayingNow(_ responseBlock: @escaping (Array<AnyObject>, Error?)->()) {
         
         let nowPlayingURL = "\(baseURL)\(nowPlayingEndPoint)"
         
         let manager = AFHTTPSessionManager()
+        
         
         manager.get(nowPlayingURL,
                     parameters: movieDBAPIKey,
@@ -37,7 +38,7 @@ class MovieDBServer: NSObject {
             },
                     success: { (task:URLSessionDataTask, response:Any?) in
                         
-                        let value = response as! AnyObject
+                        let value = response as AnyObject
                         
                         if let response = response as? Dictionary<String, AnyObject> {
                             

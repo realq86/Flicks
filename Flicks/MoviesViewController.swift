@@ -8,6 +8,7 @@
 
 import UIKit
 import AFNetworking
+import CircularSpinner
 
 private let imageBaseURL500px = "https://image.tmdb.org/t/p/w500"
 
@@ -45,9 +46,11 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
 
     // MARK: API Call
-    func apiCAll(completionHandler:@escaping ()->()) {
+    func apiCAll(_ completionHandler:@escaping ()->()) {
         let moveDB = MovieDBServer.sharedInstance
         
+        CircularSpinner.useContainerView(self.view)
+        CircularSpinner.show("Loading...", animated: true, type: .indeterminate)
         moveDB.getPlayingNow { (jsonResponse:Array<AnyObject>, error:Error?) in
             
             if (error == nil) {
@@ -59,16 +62,17 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
             else {
                 self.networkErrorView.isHidden = false
             }
+            CircularSpinner.hide()
         }
     }
     
     // MARK: UIRefreshControl
     func setupRefreshControl() {
         let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(refreshControlPulled(refreshControl:)), for: .valueChanged)
+        refreshControl.addTarget(self, action: #selector(refreshControlPulled(_:)), for: .valueChanged)
         self.tableView.insertSubview(refreshControl, at: 0)
     }
-    func refreshControlPulled(refreshControl:UIRefreshControl) {
+    func refreshControlPulled(_ refreshControl:UIRefreshControl) {
         
         self.apiCAll {
             refreshControl.endRefreshing()
@@ -77,11 +81,11 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
 
     // MARK: Table View Code
-    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    open func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.movieListArray.count
     }
     
-    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? MovieCell
         
