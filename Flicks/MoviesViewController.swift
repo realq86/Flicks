@@ -103,7 +103,6 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         
         //Set Movie Overview
-        
         if let movieOverviewString = self.movieListArray[indexPath.row].value(forKeyPath: "overview") as? String {
             cell?.movieOverview.text = movieOverviewString
         }
@@ -123,21 +122,15 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if let cell = sender as? MovieCell {
         
             if let currentIndexPath = tableView.indexPath(for: cell) {
-            
-                if let imagePathString = self.movieListArray[currentIndexPath.row].value(forKeyPath: "poster_path") as? String {
-                    
-                    let imageURLString = "\(imageBaseURL500px)" + imagePathString
-                    
-                    if let detailVC = segue.destination as? DetailsViewController {
-                        detailVC.backgroundImageURL = imageURLString
-                        detailVC.overviewString = cell.movieOverview.text
-                    }
-                    
+                
+                let movie = self.movieListArray[currentIndexPath.row]
+                if let detailVC = segue.destination as? DetailsViewController {
+                    detailVC.movieJson = movie
                 }
             }
         }
         
     }
- 
+
 
 }
