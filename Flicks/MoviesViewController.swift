@@ -21,14 +21,14 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet weak var networkErrorLabel: UILabel!
     
     var movieListArray = [AnyObject]()
-    
+    var playNowOrTopRated:String?
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.setupRefreshControl()
         self.setupTableView()
         
-        self.apiCAll {  }
+        self.apiCall {  }
         
         // Do any additional setup after loading the view.
     }
@@ -45,12 +45,44 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     // MARK: API Call
-    func apiCAll(_ completionHandler:@escaping ()->()) {
+    func apiCall(_: ()->()) {
+        
+        if playNowOrTopRated == "PLAYNOW" {
+            self.playingNowApiCall {
+            }
+        }
+        else {
+            self.topRatedApiCall {
+            }
+        }
+    }
+    
+    func playingNowApiCall(_ completionHandler:@escaping ()->()) {
         let moveDB = MovieDBServer.sharedInstance
         
         CircularSpinner.useContainerView(self.view)
         CircularSpinner.show("Loading...", animated: true, type: .indeterminate)
         moveDB.getPlayingNow { (jsonResponse:Array<AnyObject>, error:Error?) in
+            
+            if (error == nil) {
+                self.movieListArray = jsonResponse
+                self.tableView.reloadData()
+                completionHandler()
+                self.networkErrorView.isHidden = true
+            }
+            else {
+                self.networkErrorView.isHidden = false
+            }
+            CircularSpinner.hide()
+        }
+    }
+    
+    func topRatedApiCall(_ completionHandler:@escaping ()->()) {
+        let moveDB = MovieDBServer.sharedInstance
+        
+        CircularSpinner.useContainerView(self.view)
+        CircularSpinner.show("Loading...", animated: true, type: .indeterminate)
+        moveDB.getTopRated { (jsonResponse:Array<AnyObject>, error:Error?) in
             
             if (error == nil) {
                 self.movieListArray = jsonResponse
@@ -73,7 +105,7 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     func refreshControlPulled(_ refreshControl:UIRefreshControl) {
         
-        self.apiCAll {
+        self.apiCall {
             refreshControl.endRefreshing()
         }
         
@@ -114,7 +146,7 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
             let imageURLString = "\(imageBaseURL500px)" + imagePathString
             cell?.movieImageView.setImageWith(URL(string: imageURLString)!)
         }
-
+        
         return cell!
     }
     
