@@ -144,7 +144,8 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if let imagePathString = self.movieListArray[indexPath.row].value(forKeyPath: "poster_path") as? String {
             
             let imageURLString = "\(imageBaseURL500px)" + imagePathString
-            cell?.movieImageView.setImageWith(URL(string: imageURLString)!)
+            self.set(imageView: (cell?.movieImageView), withURL: URL(string: imageURLString)!)
+
         }
         
         return cell!
@@ -154,6 +155,14 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         tableView.deselectRow(at: indexPath, animated: false)
     }
     
+    
+    func set(imageView:UIImageView? , withURL url:URL) {
+        
+        let smallURLRequest = NSURLRequest(url: url)
+        
+        imageView?.setImageWith(url)
+        
+    }
     
     
     // MARK: - Navigation
