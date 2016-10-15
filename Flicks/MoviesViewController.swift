@@ -13,11 +13,14 @@ import CircularSpinner
 private let imageBaseURL500px = "https://image.tmdb.org/t/p/w500"
 private let imageBaseURL92px = "https://image.tmdb.org/t/p/w92"
 private let imageBaseURL150px = "https://image.tmdb.org/t/p/w150"
-class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource {
 
+    //MARK: - IBOutlets
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var collectionViewFlowLayout: UICollectionViewFlowLayout!
     
-    //MARK: NetworkError IBOutlets
+    //NetworkError IBOutlets
     @IBOutlet weak var networkErrorView: UIView!
     @IBOutlet weak var networkErrorLabel: UILabel!
     
@@ -28,6 +31,7 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
         self.setupRefreshControl()
         self.setupTableView()
+        self.setupCollectionView()
         
         self.apiCall {  }
         
@@ -45,7 +49,7 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.networkErrorView.isHidden = true
     }
     
-    // MARK: API Call
+    // MARK: - API Call
     func apiCall(_: ()->()) {
         
         if playNowOrTopRated == "PLAYNOW" {
@@ -98,7 +102,7 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
     }
     
-    // MARK: UIRefreshControl
+    // MARK: - UIRefreshControl
     func setupRefreshControl() {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refreshControlPulled(_:)), for: .valueChanged)
@@ -112,7 +116,7 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
     }
 
-    // MARK: Table View Code
+    // MARK: - Table View Code
     
     func setupTableView() {
         self.tableView.estimatedRowHeight = 100
@@ -190,6 +194,31 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         })
         
     }
+    
+    // MARK: - CollectionView
+    
+    func setupCollectionView() {
+        self.collectionViewFlowLayout.scrollDirection = .horizontal
+        self.collectionViewFlowLayout.estimatedItemSize = CGSize(width: 50, height: 50)
+        self.collectionViewFlowLayout.minimumLineSpacing = 10
+        self.collectionViewFlowLayout.minimumInteritemSpacing = 10
+    
+    }
+    
+    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 40
+    }
+    
+    
+    // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
+    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "movieCollectionCell", for: indexPath) as? movieCollectionCell
+        
+        cell?.titleLabel.text = "TESTjsdf;l ajsflajs fl;asf l;ajsf lsajlksa ;lajsfls jfdslj"
+        
+        return cell!
+    }
+    
     
     
     // MARK: - Navigation
