@@ -11,7 +11,8 @@ import AFNetworking
 import CircularSpinner
 
 private let imageBaseURL500px = "https://image.tmdb.org/t/p/w500"
-
+private let imageBaseURL92px = "https://image.tmdb.org/t/p/w92"
+private let imageBaseURL150px = "https://image.tmdb.org/t/p/w150"
 class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
@@ -143,8 +144,7 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         //Set Movie Image
         if let imagePathString = self.movieListArray[indexPath.row].value(forKeyPath: "poster_path") as? String {
             
-            let imageURLString = "\(imageBaseURL500px)" + imagePathString
-            self.set(imageView: (cell?.movieImageView), withURL: URL(string: imageURLString)!)
+            self.set(imageView: (cell?.movieImageView), withURL: imagePathString)
 
         }
         
@@ -156,11 +156,38 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     
-    func set(imageView:UIImageView? , withURL url:URL) {
+    func set(imageView:UIImageView? , withURL imagePathString:String) {
         
-        let smallURLRequest = NSURLRequest(url: url)
+        guard let urlForSmall  = URL(string: "\(imageBaseURL150px)" + imagePathString)
+            else {
+                return
+        }
+        let smallURLRequest = URLRequest(url: urlForSmall)
         
-        imageView?.setImageWith(url)
+        guard let urlForLarge  = URL(string: "\(imageBaseURL150px)" + imagePathString)
+            else {
+                return
+        }
+        imageView?.setImageWith(smallURLRequest,
+                                placeholderImage: nil,
+                                success: { (smallURLRequest, smallResponse, image:UIImage) in
+                                    
+                                    imageView?.alpha = 0.0
+                                    imageView?.image = image
+                                    
+                                    UIView.animate(withDuration: 0.3,
+                                                   animations: {
+                                                        imageView?.alpha = 1.0
+                                                    },
+                                                   completion: { (success) in
+                                                    imageView?.setImageWith(urlForLarge)
+                                    })
+                                    
+                                    
+                                },
+                                failure: { (smallURLRequest, smallResponse, error:Error) in
+                                    print("Small Image Load Error \(error.localizedDescription)")
+        })
         
     }
     

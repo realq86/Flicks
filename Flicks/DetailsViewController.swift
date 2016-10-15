@@ -10,7 +10,8 @@ import UIKit
 import AFNetworking
 
 private let imageBaseURL500px = "https://image.tmdb.org/t/p/w500"
-
+private let imageBaseURL92px = "https://image.tmdb.org/t/p/w92"
+private let imageBaseURL150px = "https://image.tmdb.org/t/p/w150"
 private let original_title_path = "original_title"
 private let poster_URL_path = "poster_path"
 private let overview_path = "overview"
@@ -54,8 +55,10 @@ class DetailsViewController: UIViewController {
         //Set Movie Image
         if let imagePathString = movieJson.value(forKeyPath: poster_URL_path) as? String {
             
-            let imageURLString = "\(imageBaseURL500px)" + imagePathString
-            self.backgroundImageView.setImageWith(URL(string: imageURLString)!)
+//            let imageURLString = "\(imageBaseURL500px)" + imagePathString
+//            self.backgroundImageView.setImageWith(URL(string: imageURLString)!)
+            
+            self.set(imageView: self.backgroundImageView, withURL: imagePathString)
         }
         
         //Set Movie Overview
@@ -74,6 +77,42 @@ class DetailsViewController: UIViewController {
         }
         
     }
+    
+    func set(imageView:UIImageView? , withURL imagePathString:String) {
+        
+        guard let urlForSmall  = URL(string: "\(imageBaseURL150px)" + imagePathString)
+            else {
+                return
+        }
+        let smallURLRequest = URLRequest(url: urlForSmall)
+        
+        guard let urlForLarge  = URL(string: "\(imageBaseURL500px)" + imagePathString)
+            else {
+                return
+        }
+        imageView?.setImageWith(smallURLRequest,
+                                placeholderImage: nil,
+                                success: { (smallURLRequest, smallResponse, image:UIImage) in
+                                    
+                                    imageView?.alpha = 0.0
+                                    imageView?.image = image
+                                    
+                                    UIView.animate(withDuration: 0.3,
+                                                   animations: {
+                                                    imageView?.alpha = 1.0
+                                        },
+                                                   completion: { (success) in
+                                                    imageView?.setImageWith(urlForLarge)
+                                    })
+                                    
+                                    
+            },
+                                failure: { (smallURLRequest, smallResponse, error:Error) in
+                                    print("Small Image Load Error \(error.localizedDescription)")
+        })
+        
+    }
+
 
     /*
     // MARK: - Navigation
