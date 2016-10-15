@@ -103,6 +103,10 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
             cell?.movieTitle.text = movieTitleString
         }
+        //Set Movie Overview
+        if let movieOverviewString = self.movieListArray[indexPath.row].value(forKeyPath: "overview") as? String {
+            cell?.movieOverview.text = movieOverviewString
+        }
         
         //Set Movie Image
         if let imagePathString = self.movieListArray[indexPath.row].value(forKeyPath: "poster_path") as? String {
@@ -110,15 +114,12 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
             let imageURLString = "\(imageBaseURL500px)" + imagePathString
             cell?.movieImageView.setImageWith(URL(string: imageURLString)!)
         }
-        
-        //Set Movie Overview
-        if let movieOverviewString = self.movieListArray[indexPath.row].value(forKeyPath: "overview") as? String {
-            cell?.movieOverview.text = movieOverviewString
-        }
-        
-        cell?.sizeToFit()
+
         return cell!
-        
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
     }
     
     
