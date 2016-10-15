@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -100,20 +101,25 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bjb-76-XAC">
                                 <color key="backgroundColor" red="0.63137254899999995" green="0.4431372549" blue="0.22352941179999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ClZ-DG-WkQ">
-                                    <size key="itemSize" width="155" height="149"/>
+                                    <size key="itemSize" width="288" height="149"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="movieCollectionCell" id="34s-cJ-EUC" customClass="movieCollectionCell" customModule="Flicks" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="155" height="149"/>
+                                        <rect key="frame" x="44" y="0.0" width="288" height="149"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="155" height="149"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="288" height="149"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WCx-rx-VP4">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OcJ-TJ-6OG">
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="OcJ-TJ-6OG" secondAttribute="height" multiplier="1:1" id="32z-Fh-5pE"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O0i-Ft-whO">
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -122,14 +128,17 @@
                                         </view>
                                         <color key="backgroundColor" red="0.58823529409999997" green="0.58823529409999997" blue="0.58823529409999997" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstItem="WCx-rx-VP4" firstAttribute="leading" secondItem="34s-cJ-EUC" secondAttribute="leading" id="IaV-oj-Bg4"/>
-                                            <constraint firstAttribute="trailing" secondItem="WCx-rx-VP4" secondAttribute="trailing" id="QX0-yK-cdg"/>
-                                            <constraint firstItem="WCx-rx-VP4" firstAttribute="top" secondItem="34s-cJ-EUC" secondAttribute="top" id="UeM-Qx-Mzs"/>
-                                            <constraint firstAttribute="bottom" secondItem="WCx-rx-VP4" secondAttribute="bottom" id="XhV-ud-vUt"/>
-                                            <constraint firstItem="WCx-rx-VP4" firstAttribute="centerY" secondItem="34s-cJ-EUC" secondAttribute="centerY" id="fro-s1-9bm"/>
+                                            <constraint firstAttribute="trailing" secondItem="O0i-Ft-whO" secondAttribute="trailing" id="9gm-0b-FWc"/>
+                                            <constraint firstItem="OcJ-TJ-6OG" firstAttribute="top" secondItem="34s-cJ-EUC" secondAttribute="top" id="Bie-PG-QrK"/>
+                                            <constraint firstAttribute="bottom" secondItem="OcJ-TJ-6OG" secondAttribute="bottom" id="FlO-VH-geo"/>
+                                            <constraint firstItem="O0i-Ft-whO" firstAttribute="top" secondItem="34s-cJ-EUC" secondAttribute="top" id="JtD-SH-vWZ"/>
+                                            <constraint firstAttribute="bottom" secondItem="O0i-Ft-whO" secondAttribute="bottom" id="Rid-TI-Nyz"/>
+                                            <constraint firstItem="O0i-Ft-whO" firstAttribute="leading" secondItem="OcJ-TJ-6OG" secondAttribute="trailing" id="c5s-y6-L6r"/>
+                                            <constraint firstItem="OcJ-TJ-6OG" firstAttribute="leading" secondItem="34s-cJ-EUC" secondAttribute="leading" id="gRV-SD-PFK"/>
                                         </constraints>
                                         <connections>
-                                            <outlet property="titleLabel" destination="WCx-rx-VP4" id="x6g-BT-Vbg"/>
+                                            <outlet property="movieImageView" destination="OcJ-TJ-6OG" id="7Vm-wR-7l7"/>
+                                            <outlet property="movieTitle" destination="O0i-Ft-whO" id="aLg-mB-Bl4"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>

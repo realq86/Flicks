@@ -33,7 +33,10 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.setupTableView()
         self.setupCollectionView()
         
-        self.apiCall {  }
+        self.apiCall {
+            self.tableView.reloadData()
+            self.collectionView.reloadData()
+        }
         
         // Do any additional setup after loading the view.
     }
@@ -50,14 +53,16 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     // MARK: - API Call
-    func apiCall(_: ()->()) {
+    func apiCall(reloadBlock: @escaping ()->()) {
         
         if playNowOrTopRated == "PLAYNOW" {
             self.playingNowApiCall {
+                reloadBlock()
             }
         }
         else {
             self.topRatedApiCall {
+                reloadBlock()
             }
         }
     }
@@ -71,7 +76,7 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
             
             if (error == nil) {
                 self.movieListArray = jsonResponse
-                self.tableView.reloadData()
+//                self.tableView.reloadData()
                 completionHandler()
                 self.networkErrorView.isHidden = true
             }
@@ -91,7 +96,7 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
             
             if (error == nil) {
                 self.movieListArray = jsonResponse
-                self.tableView.reloadData()
+//                self.tableView.reloadData()
                 completionHandler()
                 self.networkErrorView.isHidden = true
             }
@@ -206,7 +211,7 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 40
+        return self.movieListArray.count
     }
     
     
@@ -214,8 +219,19 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "movieCollectionCell", for: indexPath) as? movieCollectionCell
         
-        cell?.titleLabel.text = "TESTjsdf;l ajsflajs fl;asf l;ajsf lsajlksa ;lajsfls jfdslj"
+        //Set Movie Title
+        if let movieTitleString = self.movieListArray[indexPath.row].value(forKeyPath: "original_title") as? String {
+            
+            cell?.movieTitle.text = movieTitleString
+        }
         
+        //Set Movie Image
+        if let imagePathString = self.movieListArray[indexPath.row].value(forKeyPath: "poster_path") as? String {
+            
+            self.set(imageView: (cell?.movieImageView), withURL: imagePathString)
+            
+        }
+//        cell?.movieTitle.text = "TEST"
         return cell!
     }
     

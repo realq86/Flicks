@@ -10,8 +10,9 @@ import UIKit
 
 class movieCollectionCell: UICollectionViewCell {
     
-    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var movieTitle: UILabel!
     
+    @IBOutlet weak var movieImageView: UIImageView!
     
     
 }
