@@ -247,18 +247,31 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "tableViewCellSegue" {
         
-        if let cell = sender as? MovieCell {
-        
-            if let currentIndexPath = tableView.indexPath(for: cell) {
-                
-                let movie = self.movieListArray[currentIndexPath.row]
-                if let detailVC = segue.destination as? DetailsViewController {
-                    detailVC.movieJson = movie
+            if let cell = sender as? MovieCell {
+            
+                if let currentIndexPath = self.tableView.indexPath(for: cell) {
+                    
+                    let movie = self.movieListArray[currentIndexPath.row]
+                    if let detailVC = segue.destination as? DetailsViewController {
+                        detailVC.movieJson = movie
+                    }
                 }
             }
         }
         
+        if segue.identifier == "collectionCellSegue" {
+            if let cell = sender as? MovieCollectionCell {
+                if let currentIndexPath = self.collectionView.indexPath(for: cell) {
+                    
+                    let movie = self.movieListArray[currentIndexPath.row]
+                    if let detailVC = segue.destination as? DetailsViewController {
+                        detailVC.movieJson = movie
+                    }
+                }
+            }
+        }
     }
 
 
