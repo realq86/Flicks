@@ -13,12 +13,13 @@ import CircularSpinner
 private let imageBaseURL500px = "https://image.tmdb.org/t/p/w500"
 private let imageBaseURL92px = "https://image.tmdb.org/t/p/w92"
 private let imageBaseURL150px = "https://image.tmdb.org/t/p/w150"
-class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UISearchBarDelegate {
 
     //MARK: - IBOutlets
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var collectionViewFlowLayout: UICollectionViewFlowLayout!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     //NetworkError IBOutlets
     @IBOutlet weak var networkErrorView: UIView!
