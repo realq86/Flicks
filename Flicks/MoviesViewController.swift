@@ -35,6 +35,8 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.setupTableView()
         self.setupCollectionView()
         
+        self.segmentControlTouched(self.segmentControl)
+        
         self.apiCall {
             self.tableView.reloadData()
             self.collectionView.reloadData()
