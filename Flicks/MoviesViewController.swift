@@ -24,6 +24,8 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet weak var networkErrorView: UIView!
     @IBOutlet weak var networkErrorLabel: UILabel!
     
+    @IBOutlet weak var segmentControl: UISegmentedControl!
+    
     var movieListArray = [AnyObject]()
     var playNowOrTopRated:String?
     override func viewDidLoad() {
@@ -239,6 +241,21 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         return CGSize(width: dimensions, height: dimensions)
     }
     
+    
+    // MARK - SegmentControl
+    @IBAction func segmentControlTouched(_ sender: UISegmentedControl) {
+        self.tableView.isHidden = true
+        self.collectionView.isHidden = true
+        
+        if segmentControl.selectedSegmentIndex == 0 {
+            self.tableView.isHidden = false
+        }
+        if segmentControl.selectedSegmentIndex == 1 {
+            self.collectionView.isHidden = false
+        }
+    }
+    
+
     
     
     // MARK: - Navigation
