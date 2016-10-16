@@ -113,9 +113,13 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     // MARK: - UIRefreshControl
     func setupRefreshControl() {
-        let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(refreshControlPulled(_:)), for: .valueChanged)
-        self.tableView.insertSubview(refreshControl, at: 0)
+        let tablerRefreshControl = UIRefreshControl()
+        tablerRefreshControl.addTarget(self, action: #selector(refreshControlPulled(_:)), for: .valueChanged)
+        self.tableView.insertSubview(tablerRefreshControl, at: 0)
+        
+        let collectionRefreshControl = UIRefreshControl()
+        collectionRefreshControl.addTarget(self, action: #selector(refreshControlPulled(_:)), for: .valueChanged)
+        self.collectionView.insertSubview(collectionRefreshControl, at: 0)
     }
     func refreshControlPulled(_ refreshControl:UIRefreshControl) {
         
