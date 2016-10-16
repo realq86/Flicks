@@ -203,10 +203,9 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
     // MARK: - CollectionView
     
     func setupCollectionView() {
-        self.collectionViewFlowLayout.scrollDirection = .horizontal
-        self.collectionViewFlowLayout.estimatedItemSize = CGSize(width: 50, height: 50)
-        self.collectionViewFlowLayout.minimumLineSpacing = 10
-        self.collectionViewFlowLayout.minimumInteritemSpacing = 10
+//        self.collectionViewFlowLayout.scrollDirection = .horizontal
+//        self.collectionViewFlowLayout.estimatedItemSize = CGSize(width: 20, height: 20)
+//        self.collectionViewFlowLayout.sectionInset = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
     
     }
     
@@ -217,12 +216,17 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "movieCollectionCell", for: indexPath) as? movieCollectionCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "movieCollectionCell", for: indexPath) as? MovieCollectionCell
         
         //Set Movie Title
         if let movieTitleString = self.movieListArray[indexPath.row].value(forKeyPath: "original_title") as? String {
             
             cell?.movieTitle.text = movieTitleString
+        }
+        
+        //Set Movie Overview
+        if let movieOverviewString = self.movieListArray[indexPath.row].value(forKeyPath: "overview") as? String {
+            cell?.movieOverview.text = movieOverviewString
         }
         
         //Set Movie Image
@@ -233,6 +237,32 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
 //        cell?.movieTitle.text = "TEST"
         return cell!
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+//        let width = self.view.bounds.size.width/2 - 20
+//        let cell = self.collectionView.cellForItem(at: indexPath)
+//        
+////        let overviewSize = cell?.movieOverview.sizeThatFits(CGSize(width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude))
+//        
+//        print(cell)
+//        
+//        
+//        return CGSize(width: width, height: 300)
+        
+        let totalwidth = collectionView.bounds.size.width;
+        let numberOfCellsPerRow = 3
+        let oddEven = indexPath.row / numberOfCellsPerRow % 2
+        let dimensions = CGFloat(Int(totalwidth) / numberOfCellsPerRow-15)
+        
+        
+        return CGSize(width: <#T##CGFloat#>, height: <#T##CGFloat#>)
+//        if (oddEven == 0) {
+//            return CGSize(width: dimensions, height: dimensions)
+//        } else {
+//            return CGSize(width: dimensions, height: dimensions / 2)
+//        }
     }
     
     
