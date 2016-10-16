@@ -193,6 +193,7 @@
                             </searchBar>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="RrZ-Er-f01" firstAttribute="top" secondItem="j2o-6L-dwH" secondAttribute="bottom" id="3YI-gg-8f0"/>
                             <constraint firstItem="bjb-76-XAC" firstAttribute="top" secondItem="j2o-6L-dwH" secondAttribute="bottom" id="FMf-Pu-SOq"/>
