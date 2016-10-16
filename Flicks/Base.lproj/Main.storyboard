@@ -115,7 +115,9 @@
                                             <subviews>
                                                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BFs-eb-FWJ" userLabel="contentView">
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OcJ-TJ-6OG"/>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.5" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OcJ-TJ-6OG">
+                                                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </imageView>
                                                         <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hky-Iz-75V">
                                                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                             <constraints>
@@ -199,12 +201,26 @@
                             <constraint firstAttribute="trailing" secondItem="bjb-76-XAC" secondAttribute="trailing" id="zKe-tO-SwW"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="sO9-eY-BLg"/>
+                    <navigationItem key="navigationItem" id="sO9-eY-BLg">
+                        <nil key="title"/>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="Iw0-OS-9Ui">
+                            <rect key="frame" x="113" y="7" width="150" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="List"/>
+                                <segment title="Grid"/>
+                            </segments>
+                            <connections>
+                                <action selector="segmentControlTouched:" destination="BYZ-38-t0r" eventType="valueChanged" id="JiB-gF-rWy"/>
+                            </connections>
+                        </segmentedControl>
+                    </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="bjb-76-XAC" id="a1a-uT-MoE"/>
                         <outlet property="collectionViewFlowLayout" destination="ClZ-DG-WkQ" id="S4S-aC-hHY"/>
                         <outlet property="networkErrorLabel" destination="44A-0c-5Og" id="O5u-gY-UYh"/>
                         <outlet property="networkErrorView" destination="Lha-ZU-aLK" id="5DL-E3-Aa8"/>
+                        <outlet property="segmentControl" destination="Iw0-OS-9Ui" id="pga-m2-1si"/>
                         <outlet property="tableView" destination="RrZ-Er-f01" id="vqP-Sa-ZSw"/>
                     </connections>
                 </viewController>

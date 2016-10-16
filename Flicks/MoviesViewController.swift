@@ -150,19 +150,25 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         //Set Movie Title
         if let movieTitleString = self.movieListArray[indexPath.row].value(forKeyPath: "original_title") as? String {
-        
             cell?.movieTitle.text = movieTitleString
+        }
+        else {
+            cell?.movieTitle.text = ""
         }
         //Set Movie Overview
         if let movieOverviewString = self.movieListArray[indexPath.row].value(forKeyPath: "overview") as? String {
             cell?.movieOverview.text = movieOverviewString
         }
+        else {
+            cell?.movieOverview.text = ""
+        }
         
         //Set Movie Image
         if let imagePathString = self.movieListArray[indexPath.row].value(forKeyPath: "poster_path") as? String {
-            
             self.set(imageView: (cell?.movieImageView), withURL: imagePathString)
-
+        }
+        else {
+            cell?.movieImageView.image = nil
         }
         
         return cell!
