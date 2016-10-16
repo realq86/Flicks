@@ -311,5 +311,30 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
     }
 
+    // MARK - UISearchBar Delegate
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        // When there is no text, filteredData is the same as the original data
+        if searchText.isEmpty {
+            self.filteredMovieListArray = self.totalMovieListArray
+        } else {
+            // The user has entered text into the search box
+            // Use the filter method to iterate over all items in the data array
+            // For each item, return true if the item should be included and false if the
+            // item should NOT be included
+            self.filteredMovieListArray = self.totalMovieListArray.filter({(dataItem: AnyObject) -> Bool in
+                // If dataItem matches the searchText, return true to include it
+                let titleString = dataItem.value(forKeyPath: "original_title") as? String
+                if titleString?.range(of: searchText, options: .caseInsensitive) != nil {
+                    return true
+                } else {
+                    return false
+                }
+                
+            })
+        }
+        self.tableView.reloadData()
+        self.collectionView.reloadData()
+    }
+    
 
 }
