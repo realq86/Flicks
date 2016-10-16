@@ -233,13 +233,10 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         let totalwidth = collectionView.bounds.size.width;
         let numberOfCellsPerRow = 3
+//        let oddEven = indexPath.row / numberOfCellsPerRow % 2
+        let dimensions = CGFloat(Int(totalwidth) / numberOfCellsPerRow-7)
         
-        return CGSize(width: <#T##CGFloat#>, height: <#T##CGFloat#>)
-//        if (oddEven == 0) {
-//            return CGSize(width: dimensions, height: dimensions)
-//        } else {
-//            return CGSize(width: dimensions, height: dimensions / 2)
-//        }
+        return CGSize(width: dimensions, height: dimensions)
     }
     
     
