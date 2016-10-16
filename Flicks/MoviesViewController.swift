@@ -27,11 +27,14 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     @IBOutlet weak var segmentControl: UISegmentedControl!
     
-    var movieListArray = [AnyObject]()
+    var filteredMovieListArray = [AnyObject]()
+    var totalMovieListArray = [AnyObject]()
     var playNowOrTopRated:String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.automaticallyAdjustsScrollViewInsets = false
+        
         self.setupRefreshControl()
         self.setupTableView()
         self.setupCollectionView()
@@ -80,7 +83,7 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         moveDB.getPlayingNow { (jsonResponse:Array<AnyObject>, error:Error?) in
             
             if (error == nil) {
-                self.movieListArray = jsonResponse
+                self.totalMovieListArray = jsonResponse
 //                self.tableView.reloadData()
                 completionHandler()
                 self.networkErrorView.isHidden = true
@@ -100,7 +103,7 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         moveDB.getTopRated { (jsonResponse:Array<AnyObject>, error:Error?) in
             
             if (error == nil) {
-                self.movieListArray = jsonResponse
+                self.totalMovieListArray = jsonResponse
 //                self.tableView.reloadData()
                 completionHandler()
                 self.networkErrorView.isHidden = true
@@ -142,7 +145,7 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     open func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.movieListArray.count
+        return self.filteredMovieListArray.count
     }
     
     open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -150,14 +153,14 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? MovieCell
         
         //Set Movie Title
-        if let movieTitleString = self.movieListArray[indexPath.row].value(forKeyPath: "original_title") as? String {
+        if let movieTitleString = self.filteredMovieListArray[indexPath.row].value(forKeyPath: "original_title") as? String {
             cell?.movieTitle.text = movieTitleString
         }
         else {
             cell?.movieTitle.text = ""
         }
         //Set Movie Overview
-        if let movieOverviewString = self.movieListArray[indexPath.row].value(forKeyPath: "overview") as? String {
+        if let movieOverviewString = self.filteredMovieListArray[indexPath.row].value(forKeyPath: "overview") as? String {
             cell?.movieOverview.text = movieOverviewString
         }
         else {
@@ -165,7 +168,7 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         
         //Set Movie Image
-        if let imagePathString = self.movieListArray[indexPath.row].value(forKeyPath: "poster_path") as? String {
+        if let imagePathString = self.filteredMovieListArray[indexPath.row].value(forKeyPath: "poster_path") as? String {
             self.set(imageView: (cell?.movieImageView), withURL: imagePathString)
         }
         else {
@@ -221,7 +224,7 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.movieListArray.count
+        return self.filteredMovieListArray.count
     }
     
     
@@ -230,7 +233,7 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "movieCollectionCell", for: indexPath) as? MovieCollectionCell
         
         //Set Movie Title
-        if let movieTitleString = self.movieListArray[indexPath.row].value(forKeyPath: "original_title") as? String {
+        if let movieTitleString = self.filteredMovieListArray[indexPath.row].value(forKeyPath: "original_title") as? String {
             cell?.movieTitle.text = movieTitleString
         }
         else {
@@ -238,7 +241,7 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         
         //Set Movie Image
-        if let imagePathString = self.movieListArray[indexPath.row].value(forKeyPath: "poster_path") as? String {
+        if let imagePathString = self.filteredMovieListArray[indexPath.row].value(forKeyPath: "poster_path") as? String {
             self.set(imageView: (cell?.movieImageView), withURL: imagePathString)
         }
         else {
@@ -287,7 +290,7 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
             
                 if let currentIndexPath = self.tableView.indexPath(for: cell) {
                     
-                    let movie = self.movieListArray[currentIndexPath.row]
+                    let movie = self.filteredMovieListArray[currentIndexPath.row]
                     if let detailVC = segue.destination as? DetailsViewController {
                         detailVC.movieJson = movie
                     }
@@ -299,7 +302,7 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
             if let cell = sender as? MovieCollectionCell {
                 if let currentIndexPath = self.collectionView.indexPath(for: cell) {
                     
-                    let movie = self.movieListArray[currentIndexPath.row]
+                    let movie = self.filteredMovieListArray[currentIndexPath.row]
                     if let detailVC = segue.destination as? DetailsViewController {
                         detailVC.movieJson = movie
                     }
