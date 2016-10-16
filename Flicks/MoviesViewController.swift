@@ -13,7 +13,7 @@ import CircularSpinner
 private let imageBaseURL500px = "https://image.tmdb.org/t/p/w500"
 private let imageBaseURL92px = "https://image.tmdb.org/t/p/w92"
 private let imageBaseURL150px = "https://image.tmdb.org/t/p/w150"
-class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource {
+class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     //MARK: - IBOutlets
     @IBOutlet weak var tableView: UITableView!

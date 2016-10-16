@@ -18,7 +18,7 @@
 		8B94BFC51DB09E4800BA8C44 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B94BFC41DB09E4800BA8C44 /* DetailsViewController.swift */; };
 		8B95CD561DB036A000C5E960 /* MovieDBServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B95CD551DB036A000C5E960 /* MovieDBServer.swift */; };
 		8B95CD591DB0625D00C5E960 /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B95CD581DB0625D00C5E960 /* MovieCell.swift */; };
-		8BA9F7C71DB2BF01009F7E5C /* movieCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA9F7C61DB2BF01009F7E5C /* movieCollectionCell.swift */; };
+		8BA9F7C71DB2BF01009F7E5C /* MovieCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA9F7C61DB2BF01009F7E5C /* MovieCollectionCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,7 +58,7 @@
 		8B94BFC41DB09E4800BA8C44 /* DetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		8B95CD551DB036A000C5E960 /* MovieDBServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDBServer.swift; sourceTree = "<group>"; };
 		8B95CD581DB0625D00C5E960 /* MovieCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MovieCell.swift; path = MovieCell/MovieCell.swift; sourceTree = "<group>"; };
-		8BA9F7C61DB2BF01009F7E5C /* movieCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = movieCollectionCell.swift; sourceTree = "<group>"; };
+		8BA9F7C61DB2BF01009F7E5C /* MovieCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieCollectionCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,7 +155,7 @@
 			children = (
 				8B88C8E81DAEF3DE000FAB65 /* MoviesViewController.swift */,
 				8B95CD581DB0625D00C5E960 /* MovieCell.swift */,
-				8BA9F7C61DB2BF01009F7E5C /* movieCollectionCell.swift */,
+				8BA9F7C61DB2BF01009F7E5C /* MovieCollectionCell.swift */,
 			);
 			name = "Movies VC";
 			sourceTree = "<group>";
@@ -362,7 +362,7 @@
 			files = (
 				8B88C8BB1DAEF1C8000FAB65 /* AppDelegate.swift in Sources */,
 				8B88C8E91DAEF3DE000FAB65 /* MoviesViewController.swift in Sources */,
-				8BA9F7C71DB2BF01009F7E5C /* movieCollectionCell.swift in Sources */,
+				8BA9F7C71DB2BF01009F7E5C /* MovieCollectionCell.swift in Sources */,
 				8B95CD591DB0625D00C5E960 /* MovieCell.swift in Sources */,
 				8B95CD561DB036A000C5E960 /* MovieDBServer.swift in Sources */,
 				8B94BFC51DB09E4800BA8C44 /* DetailsViewController.swift in Sources */,
