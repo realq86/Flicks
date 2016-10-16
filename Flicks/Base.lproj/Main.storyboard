@@ -26,7 +26,7 @@
                                         <rect key="frame" x="0.0" y="92" width="375" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Q5k-12-RKc" id="14w-yJ-w7L">
-                                            <frame key="frameInset" width="375" height="99.5"/>
+                                            <frame key="frameInset" width="375" height="99"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EHP-Qm-qXO">
@@ -185,26 +185,35 @@
                                     <constraint firstAttribute="trailing" secondItem="44A-0c-5Og" secondAttribute="trailing" id="fVL-8Z-QTU"/>
                                 </constraints>
                             </view>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="j2o-6L-dwH">
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="V32-Zf-CN0"/>
+                                </connections>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="bjb-76-XAC" firstAttribute="top" secondItem="9yd-t0-tlS" secondAttribute="bottom" id="1gg-Tt-bqG"/>
+                            <constraint firstItem="RrZ-Er-f01" firstAttribute="top" secondItem="j2o-6L-dwH" secondAttribute="bottom" id="3YI-gg-8f0"/>
+                            <constraint firstItem="bjb-76-XAC" firstAttribute="top" secondItem="j2o-6L-dwH" secondAttribute="bottom" id="FMf-Pu-SOq"/>
                             <constraint firstItem="YNz-ge-sJC" firstAttribute="top" secondItem="RrZ-Er-f01" secondAttribute="bottom" id="G0W-G4-jki"/>
-                            <constraint firstItem="RrZ-Er-f01" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="J2P-TW-7Ap"/>
                             <constraint firstItem="Lha-ZU-aLK" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="L3I-km-qGw"/>
+                            <constraint firstItem="j2o-6L-dwH" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="PBD-Xt-s7Z"/>
                             <constraint firstItem="RrZ-Er-f01" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="PUQ-kw-kVq"/>
                             <constraint firstItem="Lha-ZU-aLK" firstAttribute="top" secondItem="9yd-t0-tlS" secondAttribute="bottom" id="TDz-IG-3ro"/>
+                            <constraint firstAttribute="trailing" secondItem="j2o-6L-dwH" secondAttribute="trailing" id="bao-du-zeI"/>
                             <constraint firstAttribute="trailing" secondItem="Lha-ZU-aLK" secondAttribute="trailing" id="bkT-Xo-0QT"/>
                             <constraint firstItem="bjb-76-XAC" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="gbe-08-Svu"/>
                             <constraint firstItem="YNz-ge-sJC" firstAttribute="top" secondItem="bjb-76-XAC" secondAttribute="bottom" id="ppw-8a-86r"/>
                             <constraint firstAttribute="trailing" secondItem="RrZ-Er-f01" secondAttribute="trailing" id="rjw-IZ-P4e"/>
+                            <constraint firstItem="j2o-6L-dwH" firstAttribute="top" secondItem="9yd-t0-tlS" secondAttribute="bottom" id="vB3-fQ-sew"/>
                             <constraint firstAttribute="trailing" secondItem="bjb-76-XAC" secondAttribute="trailing" id="zKe-tO-SwW"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="sO9-eY-BLg">
                         <nil key="title"/>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="Iw0-OS-9Ui">
-                            <rect key="frame" x="112.5" y="7" width="150" height="30"/>
+                            <rect key="frame" x="113" y="7" width="150" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
                                 <segment title="List"/>
@@ -220,6 +229,7 @@
                         <outlet property="collectionViewFlowLayout" destination="ClZ-DG-WkQ" id="S4S-aC-hHY"/>
                         <outlet property="networkErrorLabel" destination="44A-0c-5Og" id="O5u-gY-UYh"/>
                         <outlet property="networkErrorView" destination="Lha-ZU-aLK" id="5DL-E3-Aa8"/>
+                        <outlet property="searchBar" destination="j2o-6L-dwH" id="vG4-sD-Jgz"/>
                         <outlet property="segmentControl" destination="Iw0-OS-9Ui" id="pga-m2-1si"/>
                         <outlet property="tableView" destination="RrZ-Er-f01" id="vqP-Sa-ZSw"/>
                     </connections>
