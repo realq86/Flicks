@@ -44,6 +44,8 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.apiCall {
             self.tableView.reloadData()
             self.collectionView.reloadData()
+            self.searchBar(self.searchBar, textDidChange: "")
+
         }
         
         // Do any additional setup after loading the view.
