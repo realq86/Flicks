@@ -30,7 +30,7 @@ The following **additional** features are implemented:
 
 - [X] Autolayout to accomedate different screen size and landscape mode.
 - [X] Autolayout for self sizing dynamic height in UITableView.
-
+http://i.imgur.com/p5Grv3z.gifv
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
