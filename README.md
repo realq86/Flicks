@@ -32,13 +32,13 @@ The following **additional** features are implemented:
 - [X] Autolayout for self sizing dynamic height in UITableView.
 
 ![alt tag](http://www.i.imgur.com/IWtdGs4.gif)
-http://i.imgur.com/p5Grv3z.gifv
+http://i.imgur.com/p5Grv3z.gif
 
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
 <img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
-<img src='http://i.imgur.com/p5Grv3z.gifv' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='http://i.imgur.com/p5Grv3z.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 
 
