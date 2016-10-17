@@ -132,7 +132,6 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="trailing" secondItem="Hky-Iz-75V" secondAttribute="trailing" id="26W-If-gL0"/>
                                                         <constraint firstItem="OcJ-TJ-6OG" firstAttribute="top" secondItem="BFs-eb-FWJ" secondAttribute="top" id="4Vt-xC-tmK"/>
@@ -151,10 +150,10 @@
                                         </view>
                                         <color key="backgroundColor" red="0.58823529409999997" green="0.58823529409999997" blue="0.58823529409999997" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="BFs-eb-FWJ" secondAttribute="trailing" id="K5F-dM-K6H"/>
-                                            <constraint firstItem="BFs-eb-FWJ" firstAttribute="top" secondItem="34s-cJ-EUC" secondAttribute="top" id="MoS-mi-FSJ"/>
-                                            <constraint firstItem="BFs-eb-FWJ" firstAttribute="leading" secondItem="34s-cJ-EUC" secondAttribute="leading" id="lGo-fE-0eo"/>
-                                            <constraint firstAttribute="bottom" secondItem="BFs-eb-FWJ" secondAttribute="bottom" id="sA0-qf-d1j"/>
+                                            <constraint firstAttribute="trailing" secondItem="BFs-eb-FWJ" secondAttribute="trailing" constant="1" id="K5F-dM-K6H"/>
+                                            <constraint firstItem="BFs-eb-FWJ" firstAttribute="top" secondItem="34s-cJ-EUC" secondAttribute="top" constant="1" id="MoS-mi-FSJ"/>
+                                            <constraint firstItem="BFs-eb-FWJ" firstAttribute="leading" secondItem="34s-cJ-EUC" secondAttribute="leading" constant="1" id="lGo-fE-0eo"/>
+                                            <constraint firstAttribute="bottom" secondItem="BFs-eb-FWJ" secondAttribute="bottom" constant="1" id="sA0-qf-d1j"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="movieImageView" destination="OcJ-TJ-6OG" id="7Vm-wR-7l7"/>
@@ -220,6 +219,7 @@
                                 <segment title="List"/>
                                 <segment title="Grid"/>
                             </segments>
+                            <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="segmentControlTouched:" destination="BYZ-38-t0r" eventType="valueChanged" id="JiB-gF-rWy"/>
                             </connections>
@@ -376,7 +376,7 @@
             <objects>
                 <navigationController storyboardIdentifier="MovieNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="ch6-tn-qeP" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="nGt-XH-ghd">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="nGt-XH-ghd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
