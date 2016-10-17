@@ -59,4 +59,4 @@ Describe any challenges encountered while building the app.
     limitations under the License.
     
 ![alt tag](http://i.imgur.com/p5Grv3z.gifv)
-![alt tag](http://i.imgur.com/9No5daE.gif)
+
