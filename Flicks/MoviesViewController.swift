@@ -177,6 +177,12 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
             cell?.movieImageView.image = nil
         }
         
+        cell?.selectionStyle = .default
+        
+        let backgroundView = UIView()
+        backgroundView.backgroundColor = UIColor.lightGray
+        cell?.selectedBackgroundView = backgroundView
+        
         return cell!
     }
     
@@ -250,6 +256,10 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
             cell?.movieImageView.image = nil
         }
         
+        
+        let selectedView = UIView()
+        selectedView.backgroundColor = UIColor.white
+        cell?.selectedBackgroundView = selectedView
         return cell!
     }
     
@@ -261,6 +271,22 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let dimensions = CGFloat(Int(totalwidth) / numberOfCellsPerRow-7)
         
         return CGSize(width: dimensions, height: dimensions)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+//        if let cell = collectionView.cellForItem(at: indexPath) as? MovieCollectionCell {
+//            
+//            UIView.animate(withDuration: 0.3,
+//                           animations: {
+//                                cell.movieImageView.isHidden = true
+//
+//                            },
+//                           completion: { (complete:Bool) in
+//                    
+//                            })
+//            
+//        }
     }
     
     
