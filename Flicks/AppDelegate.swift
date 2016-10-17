@@ -38,8 +38,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
 
             tabBarController.viewControllers = [nowPlayingNaviVC, topRatedNaviVC]
-            UITabBar.appearance().tintColor = UIColor.gray
-//            tabBarController.tabBar.barTintColor = 
+            UITabBar.appearance().tintColor = UIColor.brown
+            tabBarController.tabBar.unselectedItemTintColor = UIColor.gray
+        
         }
         
         
