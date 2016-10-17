@@ -130,6 +130,9 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func refreshControlPulled(_ refreshControl:UIRefreshControl) {
         
         self.apiCall {
+            self.tableView.reloadData()
+            self.collectionView.reloadData()
+            self.searchBar(self.searchBar, textDidChange: "")
             refreshControl.endRefreshing()
         }
         
