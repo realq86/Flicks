@@ -11,14 +11,13 @@ import UIKit
 class MovieCollectionCell: UICollectionViewCell {
     
     @IBOutlet weak var movieTitle: UILabel!
-    @IBOutlet weak var movieOverview: UILabel!
     
     @IBOutlet weak var movieImageView: UIImageView!
     
     
     override func prepareForReuse() {
         self.movieImageView.image = nil
-        self.movieOverview.text = nil
+        self.movieTitle.text = nil
     }
     
 }
