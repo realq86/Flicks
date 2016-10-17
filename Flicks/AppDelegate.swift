@@ -29,15 +29,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if let movieVC = nowPlayingNaviVC.topViewController as? MoviesViewController {
                 movieVC.playNowOrTopRated = "PLAYNOW"
                 nowPlayingNaviVC.tabBarItem.title = "NOW PLAYING"
+                nowPlayingNaviVC.tabBarItem.image = UIImage(named: "Camera")
             }
             if let topRatedVC = topRatedNaviVC.topViewController as? MoviesViewController {
                 topRatedVC.playNowOrTopRated = "TOPRATED"
                 topRatedNaviVC.tabBarItem.title = "TOP RATED"
+                topRatedNaviVC.tabBarItem.image = UIImage(named: "Star")
             }
 
             tabBarController.viewControllers = [nowPlayingNaviVC, topRatedNaviVC]
-            
-            
+            UITabBar.appearance().tintColor = UIColor.gray
+//            tabBarController.tabBar.barTintColor = 
         }
         
         
