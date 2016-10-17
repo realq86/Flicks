@@ -45,7 +45,7 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 ## Notes
 
 Describe any challenges encountered while building the app.
-
+Setting Autolayout becomes tiring even in storyboard, and this is the 1st time I'm using priority between contraints. 
 UICollectionView remains a tone of trial and error in sizing cells and insets.
 UICollectionView's self sizing cell is not as trvial as UITableView's and I was not able to get it to work and wasted few hours.
 Parsing json in Swift remains a tone of boiler plate code.
