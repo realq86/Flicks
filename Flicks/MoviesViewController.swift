@@ -371,6 +371,7 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.showsCancelButton = false
         searchBar.text = ""
+        self.searchBar(searchBar, textDidChange: searchBar.text!)
         searchBar.resignFirstResponder()
     }
 }
