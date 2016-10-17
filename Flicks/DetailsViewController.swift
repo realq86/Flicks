@@ -36,9 +36,23 @@ class DetailsViewController: UIViewController {
         
         self.parseJsonDic(self.movieJson)
         
+        //Set Movie Title
+        if let movieTitleString = movieJson.value(forKeyPath: original_title_path) as? String {
+            
+            self.navigationItem.title = movieTitleString
+        }
+        
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named:"Back"), style: .plain, target: self, action: #selector(popViewController(_:)))
+        self.navigationItem.leftBarButtonItem?.tintColor = UIColor.gray
+        
         // Do any additional setup after loading the view.
     }
 
+    func popViewController(_ sender:AnyObject) {
+        self.navigationController?.popViewController(animated: true)
+        print(self.navigationController)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
