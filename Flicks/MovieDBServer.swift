@@ -20,10 +20,10 @@ class MovieDBServer: NSObject {
     
     var nowPlayingResponse = [String:AnyObject]()
     var nowPlayingArray = [AnyObject]()
+    
     override init() {
         print("Init MovieDBServer Singleton")
     }
-    
     
     func getPlayingNow(_ responseBlock: @escaping (Array<AnyObject>, Error?)->()) {
         
@@ -31,11 +31,9 @@ class MovieDBServer: NSObject {
         
         let manager = AFHTTPSessionManager()
         
-        
         manager.get(nowPlayingURL,
                     parameters: movieDBAPIKey,
                     progress: { (progress:Progress) in
-                        
             },
                     success: { (task:URLSessionDataTask, response:Any?) in
                                                 
@@ -45,15 +43,12 @@ class MovieDBServer: NSObject {
                             self.nowPlayingArray = self.nowPlayingResponse["results"] as! [AnyObject]
                             print("Array     \(self.nowPlayingArray)")
                         }
-                        
                         responseBlock(self.nowPlayingArray, nil)
-                        
             },
                     failure:{ (task:URLSessionDataTask?, error:Error) in
                         print(error.localizedDescription)
                         responseBlock(self.nowPlayingArray, error)
         })
-        
     }
     
     func getTopRated(_ responseBlock: @escaping (Array<AnyObject>, Error?)->()) {
@@ -61,12 +56,10 @@ class MovieDBServer: NSObject {
         let nowPlayingURL = "\(baseURL)\(topRatedEndPoint)"
         
         let manager = AFHTTPSessionManager()
-        
-        
+
         manager.get(nowPlayingURL,
                     parameters: movieDBAPIKey,
                     progress: { (progress:Progress) in
-                        
             },
                     success: { (task:URLSessionDataTask, response:Any?) in
                         
@@ -76,16 +69,11 @@ class MovieDBServer: NSObject {
                             self.nowPlayingArray = self.nowPlayingResponse["results"] as! [AnyObject]
                             print("Array     \(self.nowPlayingArray)")
                         }
-                        
                         responseBlock(self.nowPlayingArray, nil)
-                        
             },
                     failure:{ (task:URLSessionDataTask?, error:Error) in
                         print(error.localizedDescription)
                         responseBlock(self.nowPlayingArray, error)
         })
-        
     }
-    
-    
 }

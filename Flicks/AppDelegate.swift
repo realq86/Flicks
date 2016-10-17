@@ -22,7 +22,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let tabBarController = UITabBarController()
         
-        
         if let nowPlayingNaviVC = storyboard.instantiateViewController(withIdentifier: "MovieNavigationController") as? UINavigationController,
             let topRatedNaviVC = storyboard.instantiateViewController(withIdentifier: "MovieNavigationController") as? UINavigationController {
             
@@ -40,9 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             tabBarController.viewControllers = [nowPlayingNaviVC, topRatedNaviVC]
             UITabBar.appearance().tintColor = UIColor.brown
             tabBarController.tabBar.unselectedItemTintColor = UIColor.gray
-        
         }
-        
         
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = tabBarController

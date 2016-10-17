@@ -45,7 +45,6 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
             self.tableView.reloadData()
             self.collectionView.reloadData()
             self.searchBar(self.searchBar, textDidChange: "")
-
         }
         
         // Do any additional setup after loading the view.
@@ -127,6 +126,7 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         collectionRefreshControl.addTarget(self, action: #selector(refreshControlPulled(_:)), for: .valueChanged)
         self.collectionView.insertSubview(collectionRefreshControl, at: 0)
     }
+    
     func refreshControlPulled(_ refreshControl:UIRefreshControl) {
         
         self.apiCall {
@@ -135,7 +135,6 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
             self.searchBar(self.searchBar, textDidChange: "")
             refreshControl.endRefreshing()
         }
-        
     }
 
     // MARK: - Table View Code
@@ -220,13 +219,10 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
                                                    completion: { (success) in
                                                     imageView?.setImageWith(urlForLarge)
                                     })
-                                    
-                                    
                                 },
                                 failure: { (smallURLRequest, smallResponse, error:Error) in
                                     print("Small Image Load Error \(error.localizedDescription)")
         })
-        
     }
     
     // MARK: - CollectionView
@@ -278,6 +274,8 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
+        
+// OTHER OPTION OF CELL SELECTION ANIMATION
 //        if let cell = collectionView.cellForItem(at: indexPath) as? MovieCollectionCell {
 //            
 //            UIView.animate(withDuration: 0.3,
