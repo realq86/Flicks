@@ -15,5 +15,4 @@ class MovieCollectionCell: UICollectionViewCell {
     
     @IBOutlet weak var movieImageView: UIImageView!
     
-    
 }
