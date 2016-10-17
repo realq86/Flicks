@@ -157,19 +157,16 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? MovieCell
         
         //Set Movie Title
-//        cell?.movieTitle.text = ""
         if let movieTitleString = self.filteredMovieListArray[indexPath.row].value(forKeyPath: "original_title") as? String {
             cell?.movieTitle.text = movieTitleString
         }
 
         //Set Movie Overview
-//        cell?.movieOverview.text = ""
         if let movieOverviewString = self.filteredMovieListArray[indexPath.row].value(forKeyPath: "overview") as? String {
             cell?.movieOverview.text = movieOverviewString
         }
         
         //Set Movie Image
-//        cell?.movieImageView.image = nil
         if let imagePathString = self.filteredMovieListArray[indexPath.row].value(forKeyPath: "poster_path") as? String {
             self.set(imageView: (cell?.movieImageView), withURL: imagePathString)
         }
@@ -235,14 +232,12 @@ class MoviesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "movieCollectionCell", for: indexPath) as? MovieCollectionCell
         
         //Set Movie Title
-//        cell?.movieTitle.text = ""
         if let movieTitleString = self.filteredMovieListArray[indexPath.row].value(forKeyPath: "original_title") as? String {
             cell?.movieTitle.text = movieTitleString
         }
 
         
         //Set Movie Image
-//        cell?.movieImageView.image = nil
         if let imagePathString = self.filteredMovieListArray[indexPath.row].value(forKeyPath: "poster_path") as? String {
             self.set(imageView: (cell?.movieImageView), withURL: imagePathString)
         }        
