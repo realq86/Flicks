@@ -15,4 +15,10 @@ class MovieCollectionCell: UICollectionViewCell {
     
     @IBOutlet weak var movieImageView: UIImageView!
     
+    
+    override func prepareForReuse() {
+        self.movieImageView.image = nil
+        self.movieOverview.text = nil
+    }
+    
 }
