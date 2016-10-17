@@ -1,10 +1,10 @@
 # Flicks
 
-# Project 1 - *Name of App Here*
+# Project 1 - *Flicks*
 
-**Name of your app** is a movies app using the [The Movie Database API](http://docs.themoviedb.apiary.io/#).
+**Flicks** is a movies app using the [The Movie Database API](http://docs.themoviedb.apiary.io/#).
 
-Time spent: **X** hours spent in total
+Time spent: **20** hours spent in total
 
 ## User Stories
 
@@ -30,6 +30,7 @@ The following **additional** features are implemented:
 
 - [X] Autolayout to accomedate different screen size and landscape mode.
 - [X] Autolayout for self sizing dynamic height in UITableView.
+- [X] A singleton to host all networking code which shaved a lot of code from the ViewControllers.
 
 
 ## Video Walkthrough
@@ -39,16 +40,21 @@ Here's a walkthrough of implemented user stories:
 <img src='http://i.imgur.com/p5Grv3z.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 
-
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
 Describe any challenges encountered while building the app.
 
+UICollectionView remains a tone of trial and error in sizing cells and insets.
+UICollectionView's self sizing cell is not as trvial as UITableView's and I was not able to get it to work and wasted few hours.
+Parsing json in Swift remains a tone of boiler plate code.
+
+As this is the 1st week of the CodePath bootcamp.  Managing time throughout the week was also a challenge.  Basically I had to abandon any efforts towards the design of the app to make it not just ok.
+
 ## License
 
-    Copyright [yyyy] [name of copyright owner]
+    Copyright [2016] [Chi Hwa Ting]
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
